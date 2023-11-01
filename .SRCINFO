@@ -1,7 +1,7 @@
 pkgbase = dnscrypt-proxy
 	pkgdesc = A flexible DNS proxy, with support for encrypted DNS protocols
 	pkgver = 2.1.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/DNSCrypt/dnscrypt-proxy
 	arch = x86_64
 	license = ISC
@@ -9,6 +9,7 @@ pkgbase = dnscrypt-proxy
 	makedepends = go
 	depends = glibc
 	optdepends = python-urllib3: for generate-domains-blocklist
+	options = !lto
 	backup = etc/dnscrypt-proxy/dnscrypt-proxy.toml
 	backup = etc/dnscrypt-proxy/allowed-ips.txt
 	backup = etc/dnscrypt-proxy/allowed-names.txt

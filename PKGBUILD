@@ -6,7 +6,7 @@
 pkgname=dnscrypt-proxy
 pkgver=2.1.5
 _commit=8744c6f10da322921d1c12e24105bcfe813e42a6  # refs/tags/2.1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A flexible DNS proxy, with support for encrypted DNS protocols"
 arch=(x86_64)
 url="https://github.com/DNSCrypt/dnscrypt-proxy"
@@ -23,6 +23,8 @@ backup=(
   etc/$pkgname/cloaking-rules.txt
   etc/$pkgname/forwarding-rules.txt
 )
+# NOTE: LTO breaks reproducibility :(
+options=(!lto)
 source=(
   git+$url#tag=$_commit?signed
   $pkgname.service
@@ -50,8 +52,8 @@ build() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   export GOPATH="$srcdir"
+  export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
 
   go build -ldflags "-compressdwarf=false -linkmode external" .
 }
