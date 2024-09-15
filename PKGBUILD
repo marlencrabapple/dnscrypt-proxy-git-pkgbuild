@@ -5,11 +5,11 @@
 
 pkgname=dnscrypt-proxy-git
 _pkgname=dnscrypt-proxy
-pkgver=2.1.5
+pkgver=2.1.5.r85.gde16f22
 _commit=8744c6f10da322921d1c12e24105bcfe813e42a6  # refs/tags/2.1.5
-pkgrel=4
+pkgrel=1
 pkgdesc="A flexible DNS proxy, with support for encrypted DNS protocols"
-arch=(x86_64)
+arch=(i686 x86_64 x86_64_v2 x86_64_v3 armv7h aarch64)
 url="https://github.com/DNSCrypt/dnscrypt-proxy"
 license=(ISC)
 depends=(glibc)
@@ -63,6 +63,9 @@ build() {
   export CGO_LDFLAGS="$LDFLAGS"
   export GOPATH="$srcdir"
   export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
+  CC=clang
+  CXX=clang++
+  
 
   go build -ldflags "-compressdwarf=false -linkmode external" .
 }
