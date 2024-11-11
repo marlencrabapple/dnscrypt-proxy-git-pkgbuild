@@ -1,0 +1,23 @@
+post_install() {
+  local _pkgver="$1"
+
+  openssl req -x509 -out localhost-doh.pem -keyout localhost-doh-key.pem \
+   -newkey rsa:2048 -nodes -sha256 -subj \
+   '/CN=localhost/O=dnscrypt-proxy/OU=localhost doh server/' \
+   -extensions EXT \
+   -config <(printf "[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:localhost,IP.0:127.0.0.1,IP.1:::1\n\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
+
+  install -vDm 644 localhost-doh.pem  -t /var/lib/dnscrypt-proxy/
+  install -vDm 644 localhost-doh-key.pem  -t /var/lib/dnscrypt-proxy/
+  
+  trust anchor --store /var/lib/dnscrypt-proxy/localhost-doh.pem
+}
+
+post_reinstall() {
+  vercmp "$1" "$2"
+}
+
+post_remove() {
+  trust anchor --remove /var/lib/dnscrypt-proxy/localhost-doh.pem
+}
+# vim:set ts=2 sw=2 et:
