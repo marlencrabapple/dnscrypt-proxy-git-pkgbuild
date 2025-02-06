@@ -1,4 +1,4 @@
-# Maintainer: crabapp <crabapp@hikki.tech>
+# Maintainer: Ian P Bradley <crabapp@hikki.tech>
 # Contributor: John Fawkes
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
@@ -45,7 +45,7 @@ b2sums=('SKIP'
         '2f882cf27591e180cdda4f5267f13356eaff965f4c18c3bd36bf68582a3e8605660b6f292cd20a337fda49e8608719869df3a579150c811f8a402c6afb585afd'
         '5d057d0512bbfdb97b9033fd93a60259764b3b0dde5f8e1320cedd67b7cf9cb524a8b8df8142ca6071fcd5c17cd12467a79712219851e772d893f33109277623'
         'e6d88990dadaf9851247e30ef9998217a10bbc5e20a84ee4b66fe46e9d5e0f0862a3ed5193466585d7a8c4af15ad3eb0ea9c63b62c83cc24e6a6953c14727498')
-validpgpkeys=('54A2B8892CC3D6A597B92B6C210627AABA709FE1') # Frank Denis (Jedi/Sector One) <pgp@pureftpd.org
+validpgpkeys=('54A2B8892CC3D6A597B92B6C210627AABA709FE1') # Frank Denis (Jedi/Sector One) <pgp@pureftpd.org>
 
 pkgver() {
   cd "$_pkgname"
