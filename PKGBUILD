@@ -7,7 +7,7 @@
 
 _pkgname=dnscrypt-proxy
 pkgname=$_pkgname-git
-pkgver=2.1.5.r94.gee40025
+pkgver=2.1.7.r32.g0f4872a
 pkgrel=1
 pkgdesc="A flexible DNS proxy, with support for encrypted DNS protocols"
 arch=(any)
