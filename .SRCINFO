@@ -1,7 +1,7 @@
 pkgbase = dnscrypt-proxy-git
 	pkgdesc = A flexible DNS proxy, with support for encrypted DNS protocols
-	pkgver = 2.1.7.r32.g0f4872a
-	pkgrel = 1
+	pkgver = 2.1.8.r3.gae2d7d2
+	pkgrel = 2
 	url = https://github.com/DNSCrypt/dnscrypt-proxy
 	install = dnscrypt-proxy.install
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = dnscrypt-proxy-git
 	provides = dnscrypt-proxy
 	conflicts = dnscrypt-proxy
 	replaces = dnscrypt-proxy
+	options = !lto
 	backup = etc/dnscrypt-proxy/dnscrypt-proxy.toml
 	backup = etc/dnscrypt-proxy/allowed-ips.txt
 	backup = etc/dnscrypt-proxy/allowed-names.txt

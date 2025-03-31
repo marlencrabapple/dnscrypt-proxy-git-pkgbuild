@@ -7,8 +7,8 @@
 
 _pkgname=dnscrypt-proxy
 pkgname=$_pkgname-git
-pkgver=2.1.7.r32.g0f4872a
-pkgrel=1
+pkgver=2.1.8.r3.gae2d7d2
+pkgrel=2
 pkgdesc="A flexible DNS proxy, with support for encrypted DNS protocols"
 arch=(any)
 url="https://github.com/DNSCrypt/dnscrypt-proxy"
@@ -30,7 +30,7 @@ backup=(
 )
 install=$_pkgname.install
 # NOTE: LTO breaks reproducibility :(
-#options=(!lto)
+options=(!lto)
 source=(
   git+$url.git
   $_pkgname.service
