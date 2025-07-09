@@ -14,7 +14,7 @@ arch=(any)
 url="https://github.com/DNSCrypt/dnscrypt-proxy"
 license=(ISC)
 depends=(glibc openssl)
-makedepends=(git go openssl)
+makedepends=(git go openssl perl)
 optdepends=('python-urllib3: for generate-domains-blocklist')
 provides=('dnscrypt-proxy')
 replaces=('dnscrypt-proxy')
@@ -70,8 +70,7 @@ build() {
   export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
   local _target_arch_args=(-cover)
 
-  if [[ -z "$(perl -e 'use v5.40; my $generic_arch = $ENV{CARCH} =~ s/_?v[0-9\.]{1,3}$//r; say $ENV{CGO_ENABLED} = 1 if $generic_arch eq "$ENV{GOHOSTARCH}"')" ]]; then
-  fi
+  CGO_ENABLED="$(perl -e 'use v5.40; say $ENV{GOHOSTARCH} && ($ENV{GOHOSTARCH} eq $ENV{CARCH} =~ s/_?v[0-9\.]{1,3}$//r) ? 1 : 0')"
   
   if [[ -z "${CARCH%%x86_64_v[2-4]}" ]]; then
     export GOAMD64="${CARCH#x86_64_}"
